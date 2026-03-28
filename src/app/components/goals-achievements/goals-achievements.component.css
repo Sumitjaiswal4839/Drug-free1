@@ -1,0 +1,52 @@
+.achievements-header { text-align: center; margin-bottom: 40px; }
+.achievements-header h2 { font-size: 2.5em; color: #1e5a96; margin-bottom: 10px; font-weight: 700; }
+.achievements-header p { color: #555555; font-size: 1.1em; }
+
+.achievement-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; margin-bottom: 40px; }
+
+.stat { padding: 25px; background: linear-gradient(135deg, #0073b1 0%, #1e5a96 100%); border-radius: 12px; text-align: center; box-shadow: 0 4px 12px rgba(0, 115, 177, 0.15); color: white; }
+
+.stat h3 { font-size: 2.2em; margin: 0; font-weight: 700; color: #00a86b; }
+
+.stat p { margin: 10px 0 0 0; font-size: 0.95em; opacity: 0.9; }
+
+.achievements-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-bottom: 40px; }
+
+.achievement-card { padding: 25px; background-color: #ffffff; border-radius: 12px; text-align: center; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); border-top: 5px solid #00a86b; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+
+.achievement-card:hover { transform: translateY(-5px); box-shadow: 0 6px 15px rgba(0, 162, 107, 0.15); }
+
+.achievement-icon { font-size: 3em; margin-bottom: 12px; }
+
+.achievement-icon.gold { color: #ffc107; }
+.achievement-icon.silver { color: #c0c0c0; }
+.achievement-icon.bronze { color: #cd7f32; }
+
+.achievement-card h4 { color: #1e5a96; margin: 12px 0 8px 0; font-weight: 700; }
+
+.date { color: #0073b1; font-weight: 600; font-size: 0.85em; }
+
+.description { color: #555555; margin: 8px 0; }
+
+.goals-section { background-color: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); border-left: 5px solid #0073b1; }
+
+.goals-section h3 { color: #1e5a96; margin: 0 0 25px 0; font-weight: 700; }
+
+.goal-item { margin-bottom: 25px; }
+
+.goal-item:last-child { margin-bottom: 0; }
+
+.goal-info { display: flex; justify-content: space-between; margin-bottom: 8px; }
+
+.goal-info h4 { color: #1a1a1a; margin: 0; font-weight: 600; }
+
+.goal-info p { color: #0073b1; margin: 0; font-weight: 600; }
+
+.progress-bar { width: 100%; height: 12px; background-color: #f0f5f9; border-radius: 10px; overflow: hidden; }
+
+.fill { height: 100%; background: linear-gradient(90deg, #0073b1 0%, #00a86b 100%); border-radius: 10px; transition: width 0.3s ease; }
+
+@media (max-width: 768px) {
+  .achievement-stats { grid-template-columns: 1fr; }
+  .achievements-grid { grid-template-columns: repeat(2, 1fr); }
+}

@@ -1,0 +1,95 @@
+<div class="container section-padding">
+  <div class="reading-header">
+    <h2>Recommended Reading</h2>
+    <p>Curated resources and articles to support your recovery journey.</p>
+  </div>
+
+  <div class="reading-filters">
+    <input 
+      type="text" 
+      placeholder="Search articles..." 
+      [(ngModel)]="searchTerm"
+      (input)="filterArticles()"
+      class="search-input">
+
+    <div class="filter-buttons">
+      <button 
+        *ngFor="let cat of categories"
+        [class.active]="selectedCategory === cat"
+        (click)="filterByCategory(cat)"
+        class="filter-btn">
+        {{ cat }}
+      </button>
+    </div>
+  </div>
+
+  <div class="articles-grid">
+    <div *ngFor="let article of filteredArticles" class="article-card">
+      <div class="article-image">
+        <img [src]="article.image" [alt]="article.title">
+        <span class="category-badge">{{ article.category }}</span>
+      </div>
+
+      <div class="article-content">
+        <h3>{{ article.title }}</h3>
+        
+        <div class="article-meta">
+          <span class="author">
+            <i class="fa-solid fa-user-circle"></i> {{ article.author }}
+          </span>
+          <span class="date">
+            <i class="fa-solid fa-calendar"></i> {{ article.date | date:'MMM d, yyyy' }}
+          </span>
+          <span class="read-time">
+            <i class="fa-solid fa-clock"></i> {{ article.readTime }} min read
+          </span>
+        </div>
+
+        <p class="article-excerpt">{{ article.excerpt }}</p>
+
+        <div class="article-tags">
+          <span *ngFor="let tag of article.tags" class="tag">{{ tag }}</span>
+        </div>
+
+        <button class="btn-read-more">Read Full Article <i class="fa-solid fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="filteredArticles.length === 0" class="no-results">
+    <p>No articles found. Try a different search or category.</p>
+  </div>
+
+  <div class="resources-section">
+    <h3>Other Resources</h3>
+    <div class="resources-grid">
+      <div class="resource-item">
+        <i class="fa-solid fa-book"></i>
+        <h4>E-Books</h4>
+        <p>Free downloadable guides on recovery and wellness</p>
+        <button class="btn-resource">Browse E-Books</button>
+      </div>
+
+      <div class="resource-item">
+        <i class="fa-solid fa-video"></i>
+        <h4>Videos</h4>
+        <p>Educational video series on health and recovery</p>
+        <button class="btn-resource">Watch Videos</button>
+      </div>
+
+      <div class="resource-item">
+        <i class="fa-solid fa-podcast"></i>
+        <h4>Podcasts</h4>
+        <p>Listen to inspiring stories and expert discussions</p>
+        <button class="btn-resource">Listen Now</button>
+      </div>
+
+      <div class="resource-item">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <h4>Courses</h4>
+        <p>Online courses for personal growth and development</p>
+        <button class="btn-resource">Explore Courses</button>
+      </div>
+    </div>
+  </div>
+</div>

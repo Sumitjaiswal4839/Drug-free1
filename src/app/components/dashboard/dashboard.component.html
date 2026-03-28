@@ -1,0 +1,93 @@
+<div class="container section-padding">
+  <div class="dashboard-header">
+    <h2>My Dashboard</h2>
+    <p>Welcome back! Here's your recovery journey overview.</p>
+  </div>
+
+  <!-- Stats Section -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-calendar-check"></i></div>
+      <div class="stat-info">
+        <h3>{{ totalAppointments }}</h3>
+        <p>Total Appointments</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
+      <div class="stat-info">
+        <h3>{{ soberDays }}</h3>
+        <p>Days Sober</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-trophy"></i></div>
+      <div class="stat-info">
+        <h3>{{ goalsAchieved }}</h3>
+        <p>Goals Achieved</p>
+      </div>
+    </div>
+
+    <div class="stat-card">
+      <div class="stat-icon"><i class="fa-solid fa-message"></i></div>
+      <div class="stat-info">
+        <h3>{{ supportSessions }}</h3>
+        <p>Support Sessions</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="dashboard-content">
+    <!-- Upcoming Appointments -->
+    <div class="dashboard-section">
+      <h3>Upcoming Appointments</h3>
+      <div class="appointments-list">
+        <div class="appointment-card" *ngFor="let apt of appointments">
+          <div class="apt-date">
+            <p class="apt-day">{{ apt.date | date:'d' }}</p>
+            <p class="apt-month">{{ apt.date | date:'MMM' }}</p>
+          </div>
+          <div class="apt-details">
+            <h4>{{ apt.doctor }}</h4>
+            <p><i class="fa-solid fa-clock"></i> {{ apt.time }}</p>
+            <p><i class="fa-solid fa-location-dot"></i> {{ apt.location }}</p>
+          </div>
+          <button class="btn-small">Reschedule</button>
+        </div>
+        <div *ngIf="appointments.length === 0" class="no-data">
+          <p>No upcoming appointments. <a href="#book">Book one now</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Tracking -->
+    <div class="dashboard-section">
+      <h3>This Month's Goals</h3>
+      <div class="goals-list">
+        <div class="goal-item" *ngFor="let goal of goals">
+          <div class="goal-info">
+            <h4>{{ goal.name }}</h4>
+            <p>{{ goal.progress }}% completed</p>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="goal.progress"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="dashboard-section">
+      <h3>Recent Activity</h3>
+      <ul class="activity-list">
+        <li *ngFor="let activity of recentActivity">
+          <span class="activity-date">{{ activity.date | date:'MMM d' }}</span>
+          <span class="activity-text">{{ activity.text }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

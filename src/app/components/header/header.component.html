@@ -1,0 +1,174 @@
+<header>
+    <h2 class="logo">Drug Free</h2>
+    <div class="search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" placeholder="Search resources, drugs, or support...">
+    </div>
+    <nav class="navigation">
+        <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+        <div *ngIf="isAuthenticated" class="navbar-item has-submenu">
+            <a href="#" class="submenu-toggle" (click)="toggleSubmenu($event)">Profile <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/profile">My Profile</a></li>
+                <li><a routerLink="/health-history">Health History</a></li>
+                <li><a routerLink="/progress-report">Progress Report</a></li>
+                <li><a routerLink="/manage-privacy">Manage Privacy</a></li>
+                <li><a routerLink="/preferences">Preferences</a></li>
+                <li><a routerLink="/recommended-reading">Recommended Reading</a></li>
+            </ul>
+        </div>
+        <div *ngIf="isAuthenticated" class="navbar-item has-submenu">
+            <a href="#" class="submenu-toggle" (click)="toggleSubmenu($event)">Dashboard <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/book-appointment">My Appointment</a></li>
+                <li><a routerLink="/track-journey">Track My Journey</a></li>
+                <li><a routerLink="/daily-goals">Daily Goals</a></li>
+                <li><a routerLink="/daily-motivation">Daily Motivation</a></li>
+                <li><a routerLink="/goals-achievements">Goals & Achievements</a></li>
+            </ul>
+        </div>
+        <div *ngIf="isAuthenticated" class="navbar-item has-submenu">
+            <a href="#" class="submenu-toggle" (click)="toggleSubmenu($event)">Services <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/counselling-services">Counselling Services</a></li>
+                <li><a routerLink="/community-updates">Community Updates</a></li>
+                <li><a routerLink="/life-skills-training">Life Skills Training</a></li>
+                <li><a routerLink="/community-support">Community Support</a></li>
+                <li><a routerLink="/rehabilitation-programs">Rehabilitation Programs</a></li>
+            </ul>
+        </div>
+        <div class="navbar-item has-submenu">
+            <a href="#" class="submenu-toggle" (click)="toggleSubmenu($event)">Overview<i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/drug-information">Drug Information</a></li>
+                <li><a routerLink="/our-mission">Our Mission</a></li>
+                <li><a routerLink="/resources">Resources</a></li>
+                <li><a routerLink="/support-groups">Support Groups</a></li>
+            </ul>
+        </div>
+        <div class="navbar-item has-submenu">
+            <a href="#" class="submenu-toggle" (click)="toggleSubmenu($event)">Gallery <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/awards">Awards</a></li>
+                <li><a routerLink="/testimonials">Testimonials</a></li>
+                <li><a routerLink="/success-stories">Success Stories</a></li>
+                <li><a routerLink="/inspiring-moments">Inspiring Moments</a></li>
+                <li><a routerLink="/events-workshops">Events & Workshops</a></li>
+                <li><a routerLink="/latest-news">Latest News</a></li>
+            </ul>
+        </div>
+        <div class="navbar-item has-submenu">
+            <a href="#" class="submenu-toggle" (click)="toggleSubmenu($event)">Contact <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/contact">Contact Form</a></li>
+                <li><a routerLink="/helpline">Helpline</a></li>
+                <li><a routerLink="/faq">FAQ</a></li>
+            </ul>
+        </div>
+        <button *ngIf="!isAuthenticated" class="Btnlogin-popup" (click)="goToLogin()">Login</button>
+
+        <div *ngIf="isAuthenticated" class="navbar-item has-submenu user-menu-container">
+            <a href="#" class="submenu-toggle d-flex align-items-center" (click)="toggleSubmenu($event)"
+                style="display:flex; align-items:center; gap:8px;">
+                <img *ngIf="currentUser?.profilePicture" [src]="currentUser!.profilePicture" alt="Avatar"
+                    style="width:32px; height:32px; border-radius:50%; object-fit:cover;">
+                <div *ngIf="!currentUser?.profilePicture"
+                    style="width:32px; height:32px; border-radius:50%; background:#10B981; color:white; display:flex; align-items:center; justify-content:center; font-weight:bold;">
+                    {{ currentUser?.firstName?.charAt(0)?.toUpperCase() || 'U' }}
+                </div>
+                <span>{{ currentUser?.firstName }}</span>
+                <i class="fa-solid fa-caret-down"></i>
+            </a>
+            <ul class="sub-navbar">
+                <li><a routerLink="/profile">Settings</a></li>
+                <li><a href="#" (click)="logout(); $event.preventDefault()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-toggle" (click)="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+</header>
+
+<!-- Sidebar for Mobile -->
+<div class="sidebar_menu" [class.active]="isSidebarOpen">
+    <div class="btn-close-sidebar" (click)="closeSidebar()"><i class="fa-solid fa-xmark"></i></div>
+    <div class="sidebar-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="search" placeholder="Search resources, drugs, or support...">
+    </div>
+    <ul>
+        <li><a routerLink="/home" (click)="closeSidebar()">Home</a></li>
+        <li *ngIf="isAuthenticated" class="sidebar-item has-submenu">
+            <a href="#" class="sidebar-submenu-toggle" (click)="toggleSidebarSubmenu($event)">Profile <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sidebar-sub-menu">
+                <li><a routerLink="/profile" (click)="closeSidebar()">My Profile</a></li>
+                <li><a href="#edit-profile-content">Progress Report</a></li>
+                <li><a routerLink="/change-password" (click)="closeSidebar()">Health History</a></li>
+                <li><a href="#medical-history">Manage Privacy</a></li>
+                <li><a href="#health-report">Preferences</a></li>
+                <li><a routerLink="/recommended-reading" (click)="closeSidebar()">Recommended Reading</a></li>
+            </ul>
+        </li>
+        <li *ngIf="isAuthenticated" class="sidebar-item has-submenu">
+            <a href="#" class="sidebar-submenu-toggle" (click)="toggleSidebarSubmenu($event)">Dashboard <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sidebar-sub-menu">
+                <li><a routerLink="/book-appointment" (click)="closeSidebar()">My Appointment</a></li>
+                <li><a href="#session-history">Track My Journey</a></li>
+                <li><a href="#progress-tracking">Daily Motivation</a></li>
+            </ul>
+        </li>
+        <li *ngIf="isAuthenticated" class="sidebar-item has-submenu">
+            <a href="#" class="sidebar-submenu-toggle" (click)="toggleSidebarSubmenu($event)">Services <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sidebar-sub-menu">
+                <li><a href="#counselling-services">Counselling Services</a></li>
+                <li><a href="#support-groups">Support Groups</a></li>
+                <li><a href="#community-updates">Community Updates</a></li>
+            </ul>
+        </li>
+        <li class="sidebar-item has-submenu">
+            <a href="#" class="sidebar-submenu-toggle" (click)="toggleSidebarSubmenu($event)">Gallery <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sidebar-sub-menu">
+                <li><a routerLink="/awards" (click)="closeSidebar()">Awards</a></li>
+                <li><a href="#testimonials">Success Stories</a></li>
+            </ul>
+        </li>
+        <li class="sidebar-item has-submenu">
+            <a href="#" class="sidebar-submenu-toggle" (click)="toggleSidebarSubmenu($event)">Contact <i
+                    class="fa-solid fa-caret-down"></i></a>
+            <ul class="sidebar-sub-menu">
+                <li><a routerLink="/contact" (click)="closeSidebar()">Contact Form</a></li>
+                <li><a routerLink="/faq" (click)="closeSidebar()">FAQ</a></li>
+            </ul>
+        </li>
+        <li *ngIf="!isAuthenticated"><button class="Btnlogin-sidebar" (click)="goToLogin()">Login</button></li>
+        <li *ngIf="isAuthenticated" class="sidebar-item">
+            <div
+                style="display:flex; align-items:center; gap:10px; padding:15px; border-top:1px solid rgba(255,255,255,0.1);">
+                <img *ngIf="currentUser?.profilePicture" [src]="currentUser!.profilePicture" alt="Avatar"
+                    style="width:40px; height:40px; border-radius:50%; object-fit:cover;">
+                <div *ngIf="!currentUser?.profilePicture"
+                    style="width:40px; height:40px; border-radius:50%; background:#10B981; color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size:18px;">
+                    {{ currentUser?.firstName?.charAt(0)?.toUpperCase() || 'U' }}
+                </div>
+                <div style="display:flex; flex-direction:column;">
+                    <span style="font-weight:bold; color:white;">{{ currentUser?.firstName }} {{ currentUser?.lastName
+                        }}</span>
+                    <a href="#" (click)="logout(); $event.preventDefault()"
+                        style="font-size:14px; padding:0; height:auto; display:inline; color:#ff6b6b; margin-top:5px;">Logout</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

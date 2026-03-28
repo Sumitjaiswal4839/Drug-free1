@@ -1,0 +1,70 @@
+<div class="container section-padding">
+  <div class="preferences-header">
+    <h2>Preferences</h2>
+    <p>Customize your app experience.</p>
+  </div>
+
+  <!-- Theme Settings -->
+  <div class="preference-section">
+    <h3><i class="fa-solid fa-palette"></i> Theme</h3>
+    <div class="theme-options">
+      <label class="theme-option">
+        <input type="radio" name="theme" value="light" [checked]="theme === 'light'" (change)="setTheme('light')">
+        <span>Light Mode</span>
+      </label>
+      <label class="theme-option">
+        <input type="radio" name="theme" value="dark" [checked]="theme === 'dark'" (change)="setTheme('dark')">
+        <span>Dark Mode</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Notification Preferences -->
+  <div class="preference-section">
+    <h3><i class="fa-solid fa-bell"></i> Notifications</h3>
+    <div class="pref-item">
+      <span>Daily Reminders</span>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="dailyReminders">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="pref-item">
+      <span>Appointment Alerts</span>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="appointmentAlerts" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+    <div class="pref-item">
+      <span>Milestone Notifications</span>
+      <label class="toggle">
+        <input type="checkbox" [(ngModel)]="milestoneNotif" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Display Preferences -->
+  <div class="preference-section">
+    <h3><i class="fa-solid fa-display"></i> Display</h3>
+    <div class="pref-item">
+      <label>Text Size</label>
+      <select [(ngModel)]="textSize">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+    <div class="pref-item">
+      <label>Language</label>
+      <select [(ngModel)]="language">
+        <option value="en" selected>English</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </div>
+  </div>
+
+  <button class="btn-save" (click)="savePreferences()">Save Preferences</button>
+</div>

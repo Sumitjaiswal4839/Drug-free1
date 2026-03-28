@@ -1,0 +1,52 @@
+<div class="container section-padding">
+  <div class="faq-header">
+    <h2>Frequently Asked Questions</h2>
+    <p>Find answers to common questions about our services and programs.</p>
+    
+    <div class="faq-search">
+      <input 
+        type="text" 
+        placeholder="Search FAQs..." 
+        [(ngModel)]="searchTerm"
+        (input)="filterFAQs()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+  </div>
+
+  <div class="faq-categories">
+    <button 
+      *ngFor="let cat of categories"
+      [class.active]="selectedCategory === cat"
+      (click)="filterByCategory(cat)"
+      class="category-btn">
+      {{ cat }}
+    </button>
+  </div>
+
+  <div class="faq-list">
+    <div 
+      *ngFor="let faq of filteredFaqs; let i = index"
+      class="faq-item"
+      [class.active]="activeFaqIndex === i">
+      <div 
+        class="faq-question"
+        (click)="toggleFaq(i)">
+        <h3>{{ faq.question }}</h3>
+        <i class="fa-solid fa-chevron-down" [class.rotated]="activeFaqIndex === i"></i>
+      </div>
+      <div class="faq-answer" *ngIf="activeFaqIndex === i">
+        <p>{{ faq.answer }}</p>
+      </div>
+    </div>
+    
+    <div *ngIf="filteredFaqs.length === 0" class="no-results">
+      <p>No FAQs found. Try a different search or category.</p>
+    </div>
+  </div>
+
+  <div class="faq-cta">
+    <h3>Didn't find what you're looking for?</h3>
+    <p>Contact our support team for assistance.</p>
+    <button class="btn-contact">Contact Support</button>
+  </div>
+</div>

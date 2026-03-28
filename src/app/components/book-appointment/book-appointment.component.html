@@ -1,0 +1,74 @@
+<div class="container section-padding">
+  <div class="appointment-header">
+    <h2>Book an Appointment</h2>
+    <p>Schedule a session with one of our professional counselors.</p>
+  </div>
+
+  <div class="appointment-wrapper">
+    <!-- Appointment Form -->
+    <div class="appointment-form-section">
+      <form [formGroup]="appointmentForm" (ngSubmit)="submitAppointment()">
+        <h3>Appointment Details</h3>
+
+        <div class="form-group">
+          <label for="counselor">Select Counselor *</label>
+          <select id="counselor" formControlName="counselor" required>
+            <option value="">Choose a counselor...</option>
+            <option *ngFor="let doc of counselors" [value]="doc">{{ doc }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="date">Preferred Date *</label>
+          <input type="date" id="date" formControlName="date" required>
+        </div>
+
+        <div class="form-group">
+          <label for="time">Preferred Time *</label>
+          <select id="time" formControlName="time" required>
+            <option value="">Select a time...</option>
+            <option *ngFor="let slot of timeSlots" [value]="slot">{{ slot }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="type">Appointment Type *</label>
+          <select id="type" formControlName="type" required>
+            <option value="">Select type...</option>
+            <option value="Individual Counseling">Individual Counseling</option>
+            <option value="Group Therapy">Group Therapy</option>
+            <option value="Initial Assessment">Initial Assessment</option>
+            <option value="Follow-up">Follow-up Session</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Additional Notes</label>
+          <textarea id="notes" formControlName="notes" placeholder="Any specific concerns or preferences..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">Confirm Appointment</button>
+      </form>
+    </div>
+
+    <!-- Available Counselors -->
+    <div class="counselors-section">
+      <h3>Our Counselors</h3>
+      <div class="counselors-list">
+        <div *ngFor="let counselor of counselorDetails" class="counselor-card">
+          <div class="counselor-avatar">
+            <i class="fa-solid fa-user-circle"></i>
+          </div>
+          <h4>{{ counselor.name }}</h4>
+          <p class="specialty">{{ counselor.specialty }}</p>
+          <p class="experience">{{ counselor.experience }} years experience</p>
+          <div class="rating">
+            <i class="fa-solid fa-star" *ngFor="let i of [1,2,3,4,5]"></i>
+            <span>{{ counselor.rating }}</span>
+          </div>
+          <p class="availability">{{ counselor.available ? '✓ Available' : '✗ Unavailable' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

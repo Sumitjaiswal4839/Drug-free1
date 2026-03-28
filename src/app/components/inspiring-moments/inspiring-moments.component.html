@@ -1,0 +1,1 @@
+<div class="container section-padding"><div class="moments-header"><h2>Inspiring Moments</h2><p>Celebrate victories in recovery.</p></div><div class="moments-grid"><div class="moment" *ngFor="let moment of moments"><i [class]="moment.icon"></i><h3>{{ moment.title }}</h3><p>{{ moment.description }}</p><p class="date">{{ moment.date | date:'MMM d, yyyy' }}</p></div></div></div>

@@ -1,0 +1,9 @@
+<div class="container section-padding">
+  <div class="updates-header"><h2>Community Updates</h2><p>Latest news and announcements from our community.</p></div>
+  <div class="updates-list">
+    <div class="update-card" *ngFor="let update of updates">
+      <span class="update-date">{{ update.date | date:'MMM d' }}</span>
+      <h3>{{ update.title }}</h3><p>{{ update.content }}</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container section-padding">
+  <div class="journey-header">
+    <h2>Track My Journey</h2>
+    <p>Visualize your recovery progress over time.</p>
+  </div>
+
+  <div class="journey-stats">
+    <div class="stat-box">
+      <h4>{{ totalDays }} Days</h4>
+      <p>Since Start</p>
+    </div>
+    <div class="stat-box">
+      <h4>{{ milestones }}</h4>
+      <p>Milestones</p>
+    </div>
+    <div class="stat-box">
+      <h4>{{ attendanceRate }}%</h4>
+      <p>Attendance</p>
+    </div>
+  </div>
+
+  <div class="journey-timeline">
+    <h3>Your Recovery Timeline</h3>
+    <div class="timeline" *ngFor="let item of timeline; let last = last" [class.last]="last">
+      <div class="timeline-dot"></div>
+      <div class="timeline-text">
+        <h4>{{ item.title }}</h4>
+        <p class="date">{{ item.date | date:'MMM d, yyyy' }}</p>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="journey-chart">
+    <h3>Monthly Attendance Chart</h3>
+    <div class="bar-chart">
+      <div class="bar-item" *ngFor="let month of monthlyData">
+        <div class="bar" [style.height.%]="month.value"></div>
+        <span>{{ month.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>

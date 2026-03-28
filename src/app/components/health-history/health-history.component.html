@@ -1,0 +1,66 @@
+<div class="container section-padding">
+  <div class="health-header">
+    <h2>Medical History</h2>
+    <p>Your complete health records and medical information.</p>
+  </div>
+
+  <div class="health-content">
+    <!-- Add Record Button -->
+    <div class="add-record-section">
+      <button class="btn-add-record" (click)="toggleForm()">
+        <i class="fa-solid fa-plus"></i> Add Medical Record
+      </button>
+    </div>
+
+    <!-- Add Record Form -->
+    <div *ngIf="showForm" class="record-form">
+      <h3>Add New Medical Record</h3>
+      <form (ngSubmit)="addRecord()">
+        <div class="form-group">
+          <label>Date *</label>
+          <input type="date" required>
+        </div>
+        <div class="form-group">
+          <label>Record Type *</label>
+          <select required>
+            <option value="">Select type...</option>
+            <option value="Checkup">Medical Checkup</option>
+            <option value="Lab">Lab Work</option>
+            <option value="Prescription">Prescription</option>
+            <option value="Vaccination">Vaccination</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Doctor/Provider</label>
+          <input type="text" placeholder="Name of doctor or facility">
+        </div>
+        <div class="form-group">
+          <label>Diagnosis/Notes</label>
+          <textarea placeholder="Details about the visit..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">Save Record</button>
+          <button type="button" class="btn-cancel" (click)="toggleForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Medical Records Timeline -->
+    <div class="records-timeline">
+      <h3>Your Records</h3>
+      <div *ngFor="let record of healthRecords" class="timeline-item">
+        <div class="timeline-marker"></div>
+        <div class="timeline-content">
+          <div class="record-header">
+            <h4>{{ record.type }}</h4>
+            <span class="record-date">{{ record.date | date:'MMM d, yyyy' }}</span>
+          </div>
+          <p class="doctor"><i class="fa-solid fa-user-doctor"></i> {{ record.doctor }}</p>
+          <p class="diagnosis"><strong>{{ record.diagnosis }}</strong></p>
+          <p class="notes">{{ record.notes }}</p>
+          <button class="btn-edit">Edit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

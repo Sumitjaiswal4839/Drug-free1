@@ -1,0 +1,82 @@
+<div class="container section-padding">
+  <div class="drug-info-header">
+    <h2>Drug Information & Awareness</h2>
+    <p>Educational resources about drugs and their effects on health and society.</p>
+    
+    <div class="drug-search">
+      <input 
+        type="text" 
+        placeholder="Search drugs..." 
+        [(ngModel)]="searchTerm"
+        (input)="filterDrugs()">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+  </div>
+
+  <div class="drug-categories">
+    <button 
+      *ngFor="let cat of categories"
+      [class.active]="selectedCategory === cat"
+      (click)="filterByCategory(cat)"
+      class="category-btn">
+      {{ cat }}
+    </button>
+  </div>
+
+  <div class="drugs-grid">
+    <div *ngFor="let drug of filteredDrugs" class="drug-card">
+      <div class="drug-header">
+        <h3>{{ drug.name }}</h3>
+        <span [class]="'severity ' + drug.severity.toLowerCase()">{{ drug.severity }}</span>
+      </div>
+      
+      <div class="drug-info">
+        <p><strong>Category:</strong> {{ drug.category }}</p>
+        <p><strong>Type:</strong> {{ drug.type }}</p>
+      </div>
+
+      <div class="drug-effects">
+        <h4>Short-term Effects:</h4>
+        <ul>
+          <li *ngFor="let effect of drug.shortTermEffects">{{ effect }}</li>
+        </ul>
+      </div>
+
+      <div class="drug-risks">
+        <h4>Health Risks:</h4>
+        <ul>
+          <li *ngFor="let risk of drug.healthRisks">{{ risk }}</li>
+        </ul>
+      </div>
+
+      <p class="drug-description">{{ drug.description }}</p>
+      
+      <button class="btn-learn-more">Learn More</button>
+    </div>
+  </div>
+
+  <div *ngIf="filteredDrugs.length === 0" class="no-results">
+    <p>No drugs found matching your search.</p>
+  </div>
+
+  <div class="drug-resources">
+    <h3>Additional Resources</h3>
+    <div class="resources-grid">
+      <div class="resource-card">
+        <i class="fa-solid fa-book"></i>
+        <h4>Educational Articles</h4>
+        <p>Read in-depth articles about drug awareness and prevention.</p>
+      </div>
+      <div class="resource-card">
+        <i class="fa-solid fa-phone"></i>
+        <h4>Helpline Support</h4>
+        <p>Talk to professionals about addiction and recovery options.</p>
+      </div>
+      <div class="resource-card">
+        <i class="fa-solid fa-video"></i>
+        <h4>Video Tutorials</h4>
+        <p>Watch educational videos about substance abuse prevention.</p>
+      </div>
+    </div>
+  </div>
+</div>

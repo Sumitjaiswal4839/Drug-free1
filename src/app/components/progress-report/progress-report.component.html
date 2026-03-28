@@ -1,0 +1,71 @@
+<div class="container section-padding">
+  <div class="progress-header">
+    <h2>Your Progress Report</h2>
+    <p>Track your recovery journey and personal growth metrics.</p>
+  </div>
+
+  <!-- Progress Summary Cards -->
+  <div class="progress-summary">
+    <div class="summary-card">
+      <h3>{{ soberDays }}</h3>
+      <p>Days Sober</p>
+      <div class="progress-bar"><div class="progress-fill" [style.width.%]="95"></div></div>
+    </div>
+    <div class="summary-card">
+      <h3>{{ attendanceRate }}%</h3>
+      <p>Meeting Attendance</p>
+      <div class="progress-bar"><div class="progress-fill" [style.width.%]="attendanceRate"></div></div>
+    </div>
+    <div class="summary-card">
+      <h3>{{ completedGoals }}</h3>
+      <p>Goals Completed</p>
+      <div class="progress-bar"><div class="progress-fill" [style.width.%]="85"></div></div>
+    </div>
+  </div>
+
+  <!-- Monthly Progress Chart -->
+  <div class="report-section">
+    <h3>Monthly Progress</h3>
+    <div class="chart-container">
+      <div class="chart-item" *ngFor="let month of monthlyData">
+        <div class="month-bar">
+          <div class="bar" [style.height.%]="month.value"></div>
+        </div>
+        <p>{{ month.name }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Metrics -->
+  <div class="report-section">
+    <h3>Detailed Metrics</h3>
+    <table class="metrics-table">
+      <tr>
+        <td>Total Sessions Attended</td>
+        <td class="value">{{ totalSessions }}</td>
+      </tr>
+      <tr>
+        <td>Support Group Meetings</td>
+        <td class="value">{{ supportGroups }}</td>
+      </tr>
+      <tr>
+        <td>Counseling Sessions</td>
+        <td class="value">{{ counselingSessions }}</td>
+      </tr>
+      <tr>
+        <td>Physical Exercise Days</td>
+        <td class="value">{{ exerciseDays }}</td>
+      </tr>
+      <tr>
+        <td>Average Wellness Score</td>
+        <td class="value">{{ wellnessScore }}/10</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Download Report -->
+  <div class="report-actions">
+    <button class="btn-download"><i class="fa-solid fa-download"></i> Download PDF</button>
+    <button class="btn-share"><i class="fa-solid fa-share"></i> Share Report</button>
+  </div>
+</div>

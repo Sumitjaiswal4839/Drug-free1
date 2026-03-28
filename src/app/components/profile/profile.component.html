@@ -1,0 +1,100 @@
+<div class="container section-padding">
+  <div class="profile-wrapper">
+    <div class="profile-header">
+      <div class="profile-avatar">
+        <img *ngIf="user.profilePicture" [src]="user.profilePicture" alt="Profile Avatar"
+          style="width:150px; height:150px; border-radius:50%; object-fit:cover;">
+        <div *ngIf="!user.profilePicture"
+          style="width:150px; height:150px; border-radius:50%; background:#10B981; color:white; display:flex; align-items:center; justify-content:center; font-weight:bold; font-size: 60px;">
+          {{ user.firstName?.charAt(0)?.toUpperCase() || 'U' }}
+        </div>
+        <button class="btn-change-avatar"><i class="fa-solid fa-camera"></i></button>
+      </div>
+      <div class="profile-header-info">
+        <h2>{{ user.name }}</h2>
+        <p class="member-since">Member since {{ user.joinDate | date:'MMMM yyyy' }}</p>
+        <p class="status">{{ user.status }}</p>
+      </div>
+    </div>
+
+    <!-- Profile Tabs -->
+    <div class="profile-tabs">
+      <button *ngFor="let tab of tabs" [class.active]="activeTab === tab" (click)="setActiveTab(tab)"
+        class="tab-button">
+        {{ tab }}
+      </button>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="profile-content">
+      <!-- Personal Information -->
+      <div *ngIf="activeTab === 'Personal'" class="tab-panel">
+        <div class="info-grid">
+          <div class="info-item">
+            <label>Email Address</label>
+            <p>{{ user.email }}</p>
+          </div>
+          <div class="info-item">
+            <label>Phone Number</label>
+            <p>{{ user.phone }}</p>
+          </div>
+          <div class="info-item">
+            <label>Date of Birth</label>
+            <p>{{ user.dob | date:'MMM d, yyyy' }}</p>
+          </div>
+          <div class="info-item">
+            <label>Location</label>
+            <p>{{ user.location }}</p>
+          </div>
+        </div>
+        <button class="btn-edit" (click)="editProfile()">Edit Profile</button>
+      </div>
+
+      <!-- Health History -->
+      <div *ngIf="activeTab === 'Health'" class="tab-panel">
+        <div class="health-section">
+          <h3>Medical History</h3>
+          <ul class="history-list">
+            <li *ngFor="let item of user.medicalHistory">
+              <span class="date">{{ item.date | date:'MMM d, yyyy' }}</span>
+              <span class="event">{{ item.event }}</span>
+            </li>
+          </ul>
+        </div>
+        <button class="btn-edit" (click)="editProfile()">Add Medical Record</button>
+      </div>
+
+      <!-- Preferences -->
+      <div *ngIf="activeTab === 'Settings'" class="tab-panel">
+        <div class="settings-group">
+          <h3>Notification Preferences</h3>
+          <label class="checkbox-item">
+            <input type="checkbox" [checked]="user.emailNotif" (change)="toggleNotif('email')">
+            <span>Email Notifications</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" [checked]="user.smsNotif" (change)="toggleNotif('sms')">
+            <span>SMS Notifications</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" [checked]="user.appNotif" (change)="toggleNotif('app')">
+            <span>App Notifications</span>
+          </label>
+        </div>
+
+        <div class="settings-group">
+          <h3>Privacy Settings</h3>
+          <label class="checkbox-item">
+            <input type="checkbox" [checked]="user.publicProfile" (change)="togglePrivacy('public')">
+            <span>Make Profile Public</span>
+          </label>
+          <label class="checkbox-item">
+            <input type="checkbox" [checked]="user.shareStats" (change)="togglePrivacy('stats')">
+            <span>Share Progress Statistics</span>
+          </label>
+        </div>
+        <button class="btn-save" (click)="editProfile()">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>

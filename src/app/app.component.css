@@ -1,0 +1,118 @@
+/* App component styles */
+
+/* Profile Alert Overlay */
+.profile-alert-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.profile-alert-modal {
+  background: var(--bg-color, #ffffff);
+  border-radius: 20px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: translateY(20px);
+  animation: slideUp 0.4s ease forwards;
+}
+
+[data-theme="dark"] .profile-alert-modal {
+  background: var(--bg-secondary, #1f2937);
+  color: #fff;
+}
+
+.profile-alert-icon {
+  font-size: 60px;
+  color: #3b82f6;
+  margin-bottom: 20px;
+}
+
+.profile-alert-modal h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: var(--text-primary, #1e293b);
+}
+
+[data-theme="dark"] .profile-alert-modal h3 {
+  color: #fff;
+}
+
+.profile-alert-modal p {
+  color: var(--text-secondary, #64748b);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+[data-theme="dark"] .profile-alert-modal p {
+  color: #94a3b8;
+}
+
+.profile-alert-actions {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.profile-alert-actions button {
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.profile-alert-actions .btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+.profile-alert-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.6);
+}
+
+.profile-alert-actions .btn-secondary {
+  background: transparent;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+}
+
+[data-theme="dark"] .profile-alert-actions .btn-secondary {
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+.profile-alert-actions .btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .profile-alert-actions .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

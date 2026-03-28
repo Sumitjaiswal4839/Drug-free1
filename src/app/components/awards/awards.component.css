@@ -1,0 +1,341 @@
+/* awards component styles */
+
+.awards-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.awards-header h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.awards-header p {
+    font-size: 1.1em;
+    color: var(--text-light);
+}
+
+.awards-filters {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    background-color: var(--background-light);
+    border: 2px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.awards-section {
+    margin-bottom: 60px;
+}
+
+.awards-section h3 {
+    font-size: 1.8em;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.awards-section h3 i {
+    font-size: 1.2em;
+}
+
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.award-card {
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    text-align: center;
+    transition: all 0.3s ease;
+    border-top: 5px solid var(--primary-color);
+}
+
+.award-card:hover {
+    box-shadow: 0 6px 16px var(--shadow-light);
+    transform: translateY(-5px);
+}
+
+.award-icon {
+    font-size: 2.5em;
+    color: #ffc107;
+    margin-bottom: 15px;
+}
+
+.org-award h4,
+.award-card h4 {
+    color: var(--primary-color);
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+.award-year {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin: 10px 0;
+}
+
+.award-description {
+    color: var(--text-light);
+    margin: 10px 0;
+    font-size: 0.95em;
+    line-height: 1.6;
+}
+
+.award-issuer {
+    color: var(--secondary-color);
+    font-weight: 600;
+    margin-top: 12px;
+    font-size: 0.9em;
+}
+
+.milestones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.milestone-card {
+    padding: 30px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    text-align: center;
+    border-top: 5px solid var(--primary-color);
+}
+
+.milestone-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    color: white;
+    font-size: 2em;
+}
+
+.milestone-card h4 {
+    color: var(--primary-color);
+    margin: 15px 0;
+    font-size: 1.2em;
+}
+
+.count {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin: 10px 0;
+}
+
+.milestone-card .description {
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.achievement-card {
+    padding: 25px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    border-left: 5px solid var(--secondary-color);
+}
+
+.achievement-header {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.achievement-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.8em;
+}
+
+.achievement-icon.level-bronze {
+    background-color: #cd7f32;
+}
+
+.achievement-icon.level-silver {
+    background-color: #c0c0c0;
+    color: #333;
+}
+
+.achievement-icon.level-gold {
+    background-color: #ffd700;
+    color: #333;
+}
+
+.achievement-icon.level-platinum {
+    background-color: #e5e4e2;
+    color: #333;
+}
+
+.achievement-info h4 {
+    margin: 0 0 5px;
+    color: var(--primary-color);
+}
+
+.level {
+    font-size: 0.75em;
+    background-color: var(--background-light);
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: var(--text-light);
+    font-weight: 600;
+}
+
+.achievement-description {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.achievement-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.85em;
+    color: var(--text-light);
+    font-weight: 600;
+    min-width: 40px;
+}
+
+.stories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.story-card {
+    padding: 25px;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 2px 10px var(--shadow-light);
+    border-left: 5px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.story-header {
+    margin-bottom: 15px;
+}
+
+.story-header h4 {
+    color: var(--primary-color);
+    margin: 0 0 8px;
+    font-size: 1.1em;
+}
+
+.story-date {
+    font-size: 0.85em;
+    color: var(--text-light);
+}
+
+.story-excerpt {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 12px;
+    flex-grow: 1;
+    font-size: 0.95em;
+}
+
+.story-author {
+    color: var(--secondary-color);
+    font-weight: 600;
+    font-size: 0.9em;
+    margin-bottom: 12px;
+}
+
+.btn-read-story {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    align-self: flex-start;
+}
+
+.btn-read-story:hover {
+    background-color: var(--secondary-color);
+}
+
+@media (max-width: 768px) {
+    .awards-header h2 {
+        font-size: 1.8em;
+    }
+
+    .awards-grid,
+    .milestones-grid,
+    .achievements-grid,
+    .stories-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .awards-filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+    }
+
+    .filter-btn {
+        white-space: nowrap;
+    }
+}

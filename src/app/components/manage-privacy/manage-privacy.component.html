@@ -1,0 +1,62 @@
+<div class="container section-padding">
+  <div class="privacy-header">
+    <h2>Privacy & Data Settings</h2>
+    <p>Control how your information is shared and used.</p>
+  </div>
+
+  <!-- Privacy Levels -->
+  <div class="privacy-section">
+    <h3>Profile Visibility</h3>
+    <div class="privacy-option">
+      <label>
+        <input type="radio" name="privacy" value="public" (change)="setPrivacy('public')">
+        <strong>Public</strong>
+        <p>Your profile is visible to everyone</p>
+      </label>
+    </div>
+    <div class="privacy-option">
+      <label>
+        <input type="radio" name="privacy" value="friends" (change)="setPrivacy('friends')" [checked]="true">
+        <strong>Friends Only</strong>
+        <p>Only people you've connected with can see your profile</p>
+      </label>
+    </div>
+    <div class="privacy-option">
+      <label>
+        <input type="radio" name="privacy" value="private" (change)="setPrivacy('private')">
+        <strong>Private</strong>
+        <p>Only you can see your profile</p>
+      </label>
+    </div>
+  </div>
+
+  <!-- Data Sharing -->
+  <div class="privacy-section">
+    <h3>Data Sharing Preferences</h3>
+    <div class="checkbox-group">
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="shareProgress">
+        Share my progress with healthcare providers
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="shareStats">
+        Allow analytics of my usage data
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" [(ngModel)]="shareEmail">
+        Allow contact via email for updates
+      </label>
+    </div>
+  </div>
+
+  <!-- Data Download & Deletion -->
+  <div class="privacy-section">
+    <h3>Data Management</h3>
+    <div class="data-actions">
+      <button class="btn-download"><i class="fa-solid fa-download"></i> Download My Data</button>
+      <button class="btn-delete"><i class="fa-solid fa-trash"></i> Delete My Account</button>
+    </div>
+  </div>
+
+  <button class="btn-save" (click)="saveSettings()">Save Changes</button>
+</div>

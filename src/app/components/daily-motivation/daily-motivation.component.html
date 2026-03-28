@@ -1,0 +1,44 @@
+<div class="container section-padding">
+  <div class="motivation-header">
+    <h2>Daily Motivation</h2>
+    <p>Inspire yourself with daily messages and quotes.</p>
+  </div>
+
+  <div class="daily-quote">
+    <blockquote>
+      <p>"{{ currentQuote.text }}"</p>
+      <footer>— {{ currentQuote.author }}</footer>
+    </blockquote>
+    <button class="btn-new-quote" (click)="getNewQuote()">
+      <i class="fa-solid fa-rotate-right"></i> New Quote
+    </button>
+  </div>
+
+  <div class="motivation-section">
+    <h3>Success Tip of the Day</h3>
+    <div class="tip-card">
+      <i class="fa-solid fa-lightbulb"></i>
+      <p>{{ dailyTip }}</p>
+    </div>
+  </div>
+
+  <div class="motivation-section">
+    <h3>Inspirational Stories</h3>
+    <div class="stories-grid">
+      <div class="story-card" *ngFor="let story of stories">
+        <h4>{{ story.title }}</h4>
+        <p>{{ story.excerpt }}</p>
+        <button class="btn-read">Read Full Story</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="affirmations">
+    <h3>Daily Affirmations</h3>
+    <ul class="affirmation-list">
+      <li *ngFor="let affirmation of affirmations">
+        <i class="fa-solid fa-heart"></i> {{ affirmation }}
+      </li>
+    </ul>
+  </div>
+</div>

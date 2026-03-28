@@ -1,0 +1,89 @@
+<div class="container section-padding">
+  <div class="awards-header">
+    <h2>Awards & Recognition</h2>
+    <p>Celebrating achievements and milestones in our recovery community.</p>
+  </div>
+
+  <div class="awards-filters">
+    <button 
+      *ngFor="let filter of filterTypes"
+      [class.active]="selectedFilter === filter"
+      (click)="filterAwards(filter)"
+      class="filter-btn">
+      {{ filter }}
+    </button>
+  </div>
+
+  <!-- Organization Awards -->
+  <div class="awards-section" *ngIf="displayedAwards.length > 0">
+    <h3><i class="fa-solid fa-trophy"></i> Organization Awards</h3>
+    <div class="awards-grid">
+      <div *ngFor="let award of displayedAwards" class="award-card org-award">
+        <div class="award-icon">
+          <i class="fa-solid fa-award"></i>
+        </div>
+        <h4>{{ award.name }}</h4>
+        <p class="award-year">{{ award.year }}</p>
+        <p class="award-description">{{ award.description }}</p>
+        <p class="award-issuer">Issued by: {{ award.issuedBy }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Community Awards (Achievements) -->
+  <div class="awards-section" *ngIf="displayedMilestones.length > 0">
+    <h3><i class="fa-solid fa-star"></i> Community Milestones</h3>
+    <div class="milestones-grid">
+      <div *ngFor="let milestone of displayedMilestones" class="milestone-card">
+        <div class="milestone-icon" [style.backgroundColor]="milestone.color">
+          <i [class]="milestone.icon"></i>
+        </div>
+        <h4>{{ milestone.name }}</h4>
+        <p class="count">{{ milestone.count }}</p>
+        <p class="description">{{ milestone.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Individual Achievements -->
+  <div class="awards-section" *ngIf="displayedAchievements.length > 0">
+    <h3><i class="fa-solid fa-person-hiking"></i> Individual Achievements</h3>
+    
+    <div class="achievements-grid">
+      <div *ngFor="let achievement of displayedAchievements" class="achievement-card">
+        <div class="achievement-header">
+          <div class="achievement-icon" [class]="'level-' + achievement.level">
+            <i [class]="achievement.icon"></i>
+          </div>
+          <div class="achievement-info">
+            <h4>{{ achievement.name }}</h4>
+            <span class="level">{{ achievement.level | uppercase }}</span>
+          </div>
+        </div>
+        <p class="achievement-description">{{ achievement.description }}</p>
+        <div class="achievement-progress">
+          <div class="progress-bar">
+            <div class="progress-fill" [style.width.%]="achievement.progress"></div>
+          </div>
+          <span class="progress-text">{{ achievement.progress }}% achieved</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Stories -->
+  <div class="awards-section" *ngIf="displayedStories.length > 0">
+    <h3><i class="fa-solid fa-heart"></i> Success Stories</h3>
+    <div class="stories-grid">
+      <div *ngFor="let story of displayedStories" class="story-card">
+        <div class="story-header">
+          <h4>{{ story.title }}</h4>
+          <span class="story-date">{{ story.date | date:'MMM yyyy' }}</span>
+        </div>
+        <p class="story-excerpt">{{ story.excerpt }}</p>
+        <p class="story-author">- {{ story.author }}</p>
+        <button class="btn-read-story">Read Full Story</button>
+      </div>
+    </div>
+  </div>
+</div>

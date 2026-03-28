@@ -1,0 +1,1 @@
+<div class="container section-padding"><div class="news-header"><h2>Latest News</h2><p>Stay informed with our latest updates.</p></div><div class="news-grid"><div class="news-item" *ngFor="let news of newsItems"><p class="date">{{ news.date | date:'MMM d, yyyy' }}</p><h3>{{ news.title }}</h3><p>{{ news.content }}</p></div></div></div>

@@ -1,0 +1,21 @@
+<app-header *ngIf="!isAuthPage"></app-header>
+<router-outlet></router-outlet>
+
+<!-- Profile Completion Modal Overlay -->
+<div class="profile-alert-overlay" *ngIf="showIncompleteProfileAlert && !isAuthPage">
+    <div class="profile-alert-modal">
+        <div class="profile-alert-icon">
+            <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <h3>Complete Your Profile</h3>
+        <p>Hi there! It looks like your profile is missing some important details like your phone number or date of
+            birth. Updating this information helps us provide you with a more personalized recovery experience.</p>
+
+        <div class="profile-alert-actions">
+            <button class="btn-primary" (click)="goToProfileAndCloseAlert()">Update Profile Now</button>
+            <button class="btn-secondary" (click)="snoozeProfileAlert()">Remind Me Later</button>
+        </div>
+    </div>
+</div>
+
+<app-footer *ngIf="!isAuthPage"></app-footer>

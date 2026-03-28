@@ -1,0 +1,45 @@
+<div class="container section-padding">
+  <div class="achievements-header">
+    <h2>Goals & Achievements</h2>
+    <p>Your accomplishments and milestones.</p>
+  </div>
+
+  <div class="achievement-stats">
+    <div class="stat">
+      <h3>{{ totalAchievements }}</h3>
+      <p>Total Achievements</p>
+    </div>
+    <div class="stat">
+      <h3>{{ thisMonth }}</h3>
+      <p>This Month</p>
+    </div>
+    <div class="stat">
+      <h3>{{ streakDays }}</h3>
+      <p>Current Streak</p>
+    </div>
+  </div>
+
+  <div class="achievements-grid">
+    <div class="achievement-card" *ngFor="let achievement of achievements">
+      <div class="achievement-icon" [class]="achievement.level">
+        <i [class]="achievement.icon"></i>
+      </div>
+      <h4>{{ achievement.title }}</h4>
+      <p class="date">{{ achievement.date | date:'MMM d, yyyy' }}</p>
+      <p class="description">{{ achievement.description }}</p>
+    </div>
+  </div>
+
+  <div class="goals-section">
+    <h3>Active Goals</h3>
+    <div class="goal-item" *ngFor="let goal of activeGoals">
+      <div class="goal-info">
+        <h4>{{ goal.name }}</h4>
+        <p>{{ goal.progress }}% Complete</p>
+      </div>
+      <div class="progress-bar">
+        <div class="fill" [style.width.%]="goal.progress"></div>
+      </div>
+    </div>
+  </div>
+</div>

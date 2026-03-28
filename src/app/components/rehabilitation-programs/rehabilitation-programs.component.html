@@ -1,0 +1,9 @@
+<div class="container section-padding">
+  <div class="rehab-header"><h2>Rehabilitation Programs</h2><p>Comprehensive recovery programs tailored to your needs.</p></div>
+  <div class="programs-grid">
+    <div class="program-card" *ngFor="let program of programs">
+      <h3>{{ program.name }}</h3><p>{{ program.description }}</p><p class="duration">Duration: {{ program.duration }}</p>
+      <button class="btn-apply">Apply Now</button>
+    </div>
+  </div>
+</div>
